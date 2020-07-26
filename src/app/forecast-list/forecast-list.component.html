@@ -1,0 +1,49 @@
+<div *ngIf="error; else content">
+  <h3 class="error__title">
+    {{ error | titlecase }}
+  </h3>
+</div>
+<ng-template #content>
+  <div>
+    <h2>Погода в городе {{ city }} на 5 дней</h2>
+    <div *ngIf="forecastWeather">
+      <a
+        class="btn btn-outline-dark"
+        routerLink="/"
+        [queryParams]="{ city: city }"
+        >На главную</a
+      >
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Температура &#8451;</th>
+            <th>Давление &#13169;</th>
+            <th>Влажность &#37;</th>
+            <th>Ветер &#13223;</th>
+            <th>Небо</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let weather of forecastWeather">
+            <td>{{ weather.time | date: "d.MM.y, HH:mm" }}</td>
+            <td>{{ weather.temp }}</td>
+            <td>{{ weather.pressure }}</td>
+            <td>{{ weather.humidity }}</td>
+            <td>{{ weather.wind }}</td>
+            <td>
+              {{ weather.weatherDescription }}
+              <img
+                [src]="weather.weatherIcon"
+                alt="weather"
+                width="50"
+                height="50"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <app-loading *ngIf="loading"></app-loading>
+  </div>
+</ng-template>

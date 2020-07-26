@@ -1,0 +1,32 @@
+.weather__form {
+  display: flex;
+  justify-content: center;
+}
+
+.weather__input {
+  width: 200px;
+  margin-right: 2px;
+  padding: 3px 5px;
+  border: 2px solid #6b7579;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 18px;
+  outline: none;
+}
+
+.weather__btn {
+  background-color: #fff;
+  border: 2px solid #6b7579;
+  border-radius: 5px;
+  font-size: 18px;
+  line-height: 18px;
+  cursor: pointer;
+  outline: none;
+}
+
+.weather__input:hover,
+.weather__input:focus,
+.weather__btn:hover,
+.weather__btn:focus {
+  border: 2px solid #3fb5e4;
+}

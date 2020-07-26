@@ -1,0 +1,12 @@
+<div class="weather__form">
+  <input
+    class="weather__input"
+    type="text"
+    [(ngModel)]="city"
+    (keyup.enter)="getWeather()"
+    placeholder="Населенный пункт"
+  />
+  <button class="weather__btn" type="button" (click)="getWeather()">
+    Search
+  </button>
+</div>

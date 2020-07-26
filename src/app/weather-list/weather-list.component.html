@@ -1,0 +1,29 @@
+<app-loading *ngIf="loading"></app-loading>
+<div *ngIf="currentWeather">
+  <div class="weather__header">
+    <h3>В городе {{ currentWeather.city }} {{ currentWeather.description }}</h3>
+    <img [src]="currentWeather.weatherImg" alt="weather" />
+  </div>
+  <ul>
+    <li *ngFor="let item of currentWeather.weather">
+      <app-weather-item [item]="item"></app-weather-item>
+    </li>
+  </ul>
+  <a
+    class="weather__forecast-link"
+    routerLink="/forecast"
+    [queryParams]="{ city: currentWeather.city }"
+    >Показать погоду на 5 дней</a
+  >
+  <a
+    class="weather__forecast-link"
+    routerLink="/forecast-resolver"
+    [queryParams]="{ city: currentWeather.city }"
+    >Показать погоду на 5 дней resolver</a
+  >
+</div>
+<div *ngIf="error">
+  <h3 class="error__title">
+    {{ error | titlecase }}
+  </h3>
+</div>
